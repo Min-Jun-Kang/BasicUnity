@@ -408,6 +408,7 @@
 "Assets/Scripts/MonoBehaviorExample.cs"
 "Assets/Scripts/MoveObject.cs"
 "Assets/Scripts/VariableExample.cs"
+"Assets/Scripts/VectorStudy.cs"
 -langversion:9.0
 /deterministic
 /optimize+
