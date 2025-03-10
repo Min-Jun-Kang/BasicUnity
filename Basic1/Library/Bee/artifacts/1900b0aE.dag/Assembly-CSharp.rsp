@@ -401,6 +401,7 @@
 -analyzer:"E:/Unity/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"E:/Unity/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Scripts/ConditionExample.cs"
+"Assets/Scripts/FunctionExample.cs"
 "Assets/Scripts/LoopExample.cs"
 "Assets/Scripts/VariableExample.cs"
 -langversion:9.0
