@@ -8,7 +8,7 @@ public class ConditionExample : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        health -= 1; //Ã¼·Â °¨¼Ò
+        health -= 1; //ì²´ë ¥ ê°ì†Œ
         Debug.Log("Health : " + health);
         if (health <= 0) 
         {

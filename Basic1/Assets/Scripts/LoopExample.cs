@@ -4,13 +4,13 @@ public class LoopExample : MonoBehaviour
 
     void Start()
     {
-        //for¹®: 1ºÎÅÍ 10±îÁö Ãâ·Â
+        //forë¬¸: 1ë¶€í„° 10ê¹Œì§€ ì¶œë ¥
         //for(int i=1; i<=10; i++)
         //{
         //    Debug.Log("Count : " + i);
         //}
 
-        //while¹®: Á¶°ÇÀÌ ÂüÀÏ¶§ ½ÇÇà
+        //whileë¬¸: ì¡°ê±´ì´ ì°¸ì¼ë•Œ ì‹¤í–‰
         int counter = 0;
         while (counter < 5)
         {

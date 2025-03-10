@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FunctionExample : MonoBehaviour
 {
-    //ÇÔ¼ö Á¤ÀÇ
+    //í•¨ìˆ˜ ì •ì˜
     void SayHello()
     {
         Debug.Log("Hello Unity!");
