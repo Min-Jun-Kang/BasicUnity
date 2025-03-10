@@ -407,6 +407,8 @@
 "Assets/Scripts/LoopExample.cs"
 "Assets/Scripts/MonoBehaviorExample.cs"
 "Assets/Scripts/MoveObject.cs"
+"Assets/Scripts/MoveWithGravity.cs"
+"Assets/Scripts/PlayerMovement.cs"
 "Assets/Scripts/VariableExample.cs"
 "Assets/Scripts/VectorStudy.cs"
 -langversion:9.0
