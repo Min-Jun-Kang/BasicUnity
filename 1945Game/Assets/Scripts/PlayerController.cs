@@ -32,5 +32,7 @@ public class PlayerController : MonoBehaviour
         newPosition.y = Mathf.Clamp(newPosition.y, minBounds.y, maxBounds.y);
 
         transform.position = newPosition;
+
+
     }
 }

@@ -7,15 +7,20 @@ public class Player : MonoBehaviour
 
     Animator ani; //애니메이터를 가져올 변수(애니메이션에 접근해야함)
 
+    public GameObject bullet;  //총알 추후 4개 배열로 만들예정
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Transform pos = null;
+
+    //아이템
+
+    //레이저
+
     void Start()
     {
         ani = GetComponent<Animator>(); //컴포넌트 가져오기 GetComponent<컴포넌트 이름>()
        
     }
 
-    // Update is called once per frame
     void Update()
     {
         //방향키에 따른 움직임
@@ -45,7 +50,22 @@ public class Player : MonoBehaviour
         else
             ani.SetBool("up", false);
 
-        transform.Translate(moveX, moveY, 0);
+        //스페이스 바를 누를 때 bullet 발사
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //프리펩 위치 방향 넣고 생성
+            Instantiate(bullet, pos.position, Quaternion.identity);
+        }
+
+
+        transform.Translate(moveX, moveY, 0); //움직임을 표현
+
+        //캐릭터의 월드 좌표를 뷰포트 좌표계로 변환해준다.
+        Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);
+        viewPos.x = Mathf.Clamp01(viewPos.x); //x값을 0이상, 1이하로 제한한다.
+        viewPos.y = Mathf.Clamp01(viewPos.y); //y값을 0이상, 1이하로 제한한다.
+        Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewPos);//다시월드좌표로 변환
+        transform.position = worldPos; //좌표를 적용한다.
 
     }
 }
