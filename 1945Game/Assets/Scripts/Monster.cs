@@ -7,6 +7,8 @@ public class Monster : MonoBehaviour
     public Transform missile1;
     public Transform missile2;
     public GameObject bullet; //적도 공격을한다.
+    //아이템 가져오기
+    public GameObject Item = null;
 
     void Start()
     {
@@ -36,4 +38,21 @@ public class Monster : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    //미사일에 따른 데미지 입는 함수
+    public void Damage(int attack)
+    {
+        ItemDrop();
+        Destroy(gameObject);
+    }
+
+
+    public void ItemDrop()
+    {
+        //아이템 생성
+        Instantiate(Item, transform.position, Quaternion.identity); 
+    }
+
+
+
 }

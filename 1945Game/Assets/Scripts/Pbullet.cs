@@ -34,11 +34,26 @@ public class Pbullet : MonoBehaviour
             //1초 후 지우기
             Destroy(go, 1);
 
-            //몬스터
-            Destroy(collision.gameObject);
+            //몬스터 삭제
+            //Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Monster>().Damage(1);
+            //collision.gameObject -> Monster prefabs을 의미
+            //Monster 스크립트가 component이기 때문에 GetComponent를 이용해서 스크립트에 다가갈 수 있다.
+            
+            //미사일 삭제
+            Destroy(gameObject);
+        }
+        if (collision.CompareTag("Boss"))
+        {
+
+            //이펙트생성
+            GameObject go = Instantiate(effect, transform.position, Quaternion.identity);
+            //1초뒤에 지우기
+            Destroy(go, 1);
 
             //미사일 삭제
             Destroy(gameObject);
+
         }
     }
 

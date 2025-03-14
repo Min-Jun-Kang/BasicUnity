@@ -185,6 +185,7 @@ MonoBehaviour:
   missile1: {fileID: 1143404065628134202}
   missile2: {fileID: 938322057191916833}
   bullet: {fileID: 6829962353905521466, guid: 2458081c1fc3000448cde0a676007cd7, type: 3}
+  Item: {fileID: 3366118369001576420, guid: ba342478d7200e94bad8a24fb30836d3, type: 3}
 --- !u!1 &7474184416376035028
 GameObject:
   m_ObjectHideFlags: 0
