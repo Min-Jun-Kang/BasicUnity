@@ -205,6 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 0.5
   Delay: 1
+  HP: 150
   missile1: {fileID: 4112090846372208394}
   missile2: {fileID: 7356325166013147076}
   bullet: {fileID: 2690342421496061883, guid: 466dda6c4417e6d4c975cb44fa3d7f06, type: 3}

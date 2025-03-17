@@ -4,6 +4,7 @@ public class Monster : MonoBehaviour
 {
     public float Speed = 3;
     public float Delay = 1f;
+    public int HP = 100;
     public Transform missile1;
     public Transform missile2;
     public GameObject bullet; //적도 공격을한다.
@@ -42,10 +43,15 @@ public class Monster : MonoBehaviour
     //미사일에 따른 데미지 입는 함수
     public void Damage(int attack)
     {
-        ItemDrop();
-        Destroy(gameObject);
-    }
+        HP -= attack;
 
+        if (HP <= 0)
+        {
+            ItemDrop();
+            Destroy(gameObject);
+        }
+
+    }
 
     public void ItemDrop()
     {

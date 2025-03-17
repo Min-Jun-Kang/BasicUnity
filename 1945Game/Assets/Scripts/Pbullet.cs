@@ -4,6 +4,7 @@ public class Pbullet : MonoBehaviour
 {
     public float Speed = 4.0f;
     //공격력
+    public int Attack = 10;
     //이펙트
     public GameObject effect;
 
@@ -36,7 +37,10 @@ public class Pbullet : MonoBehaviour
 
             //몬스터 삭제
             //Destroy(collision.gameObject);
-            collision.gameObject.GetComponent<Monster>().Damage(1);
+
+            collision.gameObject.GetComponent<Monster>().Damage(Attack);
+            //PoolManager.Instance.Return(collision.gameObject);
+            
             //collision.gameObject -> Monster prefabs을 의미
             //Monster 스크립트가 component이기 때문에 GetComponent를 이용해서 스크립트에 다가갈 수 있다.
             

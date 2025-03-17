@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     private GameObject PowerUp; //private일 때 인스펙터에서 사용하는 방법
 
     //레이저
+    public GameObject lazer;
+    public float gValue = 0;
+
 
     void Start()
     {
@@ -54,15 +57,37 @@ public class Player : MonoBehaviour
         else
             ani.SetBool("up", false);
 
-        //스페이스 바를 누를 때 bullet 발사
+        transform.Translate(moveX, moveY, 0); //움직임을 표현
+
+        //스페이스
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //프리펩 위치 방향 넣고 생성
+            //프리팹 위치 방향 넣고 생성
             Instantiate(bullet[power], pos.position, Quaternion.identity);
         }
+        else if (Input.GetKey(KeyCode.Space))
+        {
+            gValue += Time.deltaTime;
 
 
-        transform.Translate(moveX, moveY, 0); //움직임을 표현
+            if (gValue >= 1)
+            {
+                GameObject go = Instantiate(lazer, pos.position, Quaternion.identity);
+                Destroy(go, 2);
+                gValue = 0;
+            }
+        }
+        else
+        {
+            gValue -= Time.deltaTime;
+
+            if (gValue <= 0)
+            {
+                gValue = 0;
+            }
+
+
+        }
 
         //캐릭터의 월드 좌표를 뷰포트 좌표계로 변환해준다.
         Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);
@@ -73,13 +98,15 @@ public class Player : MonoBehaviour
 
     }
 
+
+    //아이템 먹기
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Item"))
         {
             power += 1;
 
-            if (power >= 3)
+            if (power > 3)
             {
                 power = 3;
             }

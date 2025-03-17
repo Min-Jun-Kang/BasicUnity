@@ -10,14 +10,19 @@ public class Boss : MonoBehaviour
     public GameObject mb2;
     public Transform pos1;
     public Transform pos2;
-
+    
 
 
     void Start()
     {
+        Invoke("Hide", 2); //2초뒤에 텍스트 끄기
         StartCoroutine(BossMissle());
         StartCoroutine(CircleFire());
+    }
 
+    void Hide()
+    {
+        GameObject.Find("TextBossWarning").SetActive(false);
     }
 
     IEnumerator BossMissle()
@@ -31,9 +36,6 @@ public class Boss : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
-
-
-
 
     //sin      0  -> 1
     //각도     0  ->90
@@ -80,8 +82,6 @@ public class Boss : MonoBehaviour
             yield return new WaitForSeconds(attackRate);
 
         }
-
-
 
 
     }

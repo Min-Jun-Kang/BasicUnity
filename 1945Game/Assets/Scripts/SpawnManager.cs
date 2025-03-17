@@ -9,9 +9,19 @@ public class SpawnManager : MonoBehaviour
     public float SpawnStop = 10; //스폰 끝나는 시간
     public GameObject monster;
     public GameObject monster2;
+    public GameObject Boss;
 
     bool swi = true;
     bool swi2 = true;
+
+    [SerializeField]
+    GameObject textBossWarning;
+
+    private void Awake()
+    {
+        textBossWarning.SetActive(false);
+    }
+
 
     void Start()
     {
@@ -25,6 +35,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (swi)
         {
+            //오브젝트 풀 사용 예시
             //1초마다
             yield return new WaitForSeconds(StartTime);
             //x값 랜덤
@@ -33,6 +44,8 @@ public class SpawnManager : MonoBehaviour
             Vector2 r = new Vector2(x, transform.position.y);
             //몬스터 생성
             Instantiate(monster, r, Quaternion.identity);
+            //GameObject enemy = PoolManager.Instance.Get(monster);
+            //enemy.transform.position = r;
         }
     }
     IEnumerator RandomSpawn2()
@@ -69,6 +82,9 @@ public class SpawnManager : MonoBehaviour
         swi2 = false;
         StopCoroutine("RandomSpawn2");
         //보스 몬스터
+        textBossWarning.SetActive(true);
+        Vector3 pos = new Vector3(0, 1.2f, 0); //생성 위치
+        Instantiate(Boss, pos, Quaternion.identity);
     }
 
     void Update()
