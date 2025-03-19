@@ -3,29 +3,29 @@ using UnityEngine;
 public class PBullet : MonoBehaviour
 {
     public float Speed = 4.0f;
-    //°ø°İ·Â
+    //ê³µê²©ë ¥
     public int Attack = 10;
-    //ÀÌÆåÆ®
+    //ì´í™íŠ¸
     public GameObject effect;
         
     void Update()
     {
-        //¹Ì»çÀÏ À§ÂÊ¹æÇâÀ¸·Î ¿òÁ÷ÀÌ±â
-        //À§ÀÇ ¹æÇâ * ½ºÇÇµå * Å¸ÀÓ
+        //ë¯¸ì‚¬ì¼ ìœ„ìª½ë°©í–¥ìœ¼ë¡œ ì›€ì§ì´ê¸°
+        //ìœ„ì˜ ë°©í–¥ * ìŠ¤í”¼ë“œ * íƒ€ì„
         transform.Translate(Vector2.up * Speed * Time.deltaTime);
     }
 
 
-    //È­¸é¹ÛÀ¸·Î ³ª°¥°æ¿ì
+    //í™”ë©´ë°–ìœ¼ë¡œ ë‚˜ê°ˆê²½ìš°
     private void OnBecameInvisible()
     {
-        //ÀÚ±â ÀÚ½Å Áö¿ì±â
+        //ìê¸° ìì‹  ì§€ìš°ê¸°
         Destroy(gameObject);
        
     }
 
 
-    //Ãæµ¹Ã³¸®
+    //ì¶©ëŒì²˜ë¦¬
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Monster"))
@@ -34,15 +34,15 @@ public class PBullet : MonoBehaviour
 
 
 
-            //ÀÌÆåÆ®»ı¼º
+            //ì´í™íŠ¸ìƒì„±
             GameObject go  = Instantiate(effect, transform.position, Quaternion.identity);
-            //1ÃÊµÚ¿¡ Áö¿ì±â
+            //1ì´ˆë’¤ì— ì§€ìš°ê¸°
             Destroy(go, 1);
 
-            //¸ó½ºÅÍ»èÁ¦
+            //ëª¬ìŠ¤í„°ì‚­ì œ
             collision.gameObject.GetComponent<Monster>().Damage(Attack);
            //PoolManager.Instance.Return(collision.gameObject);
-            //¹Ì»çÀÏ »èÁ¦
+            //ë¯¸ì‚¬ì¼ ì‚­ì œ
             Destroy(gameObject);
 
         }
@@ -51,12 +51,12 @@ public class PBullet : MonoBehaviour
         if (collision.CompareTag("Boss"))
         {
 
-            //ÀÌÆåÆ®»ı¼º
+            //ì´í™íŠ¸ìƒì„±
             GameObject go = Instantiate(effect, transform.position, Quaternion.identity);
-            //1ÃÊµÚ¿¡ Áö¿ì±â
+            //1ì´ˆë’¤ì— ì§€ìš°ê¸°
             Destroy(go, 1);        
 
-            //¹Ì»çÀÏ »èÁ¦
+            //ë¯¸ì‚¬ì¼ ì‚­ì œ
             Destroy(gameObject);
 
         }

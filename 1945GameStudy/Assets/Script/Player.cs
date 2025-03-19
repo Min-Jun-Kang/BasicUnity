@@ -4,21 +4,21 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    //½ºÇÇµå
+    //ìŠ¤í”¼ë“œ
     public float moveSpeed = 5f;
 
-    Animator ani; //¾Ö´Ï¸ŞÀÌÅÍ¸¦ °¡Á®¿Ã º¯¼ö
+    Animator ani; //ì• ë‹ˆë©”ì´í„°ë¥¼ ê°€ì ¸ì˜¬ ë³€ìˆ˜
 
-    public GameObject[] bullet;  //ÃÑ¾Ë ÃßÈÄ 4°³ ¹è¿­·Î ¸¸µé¿¹Á¤
+    public GameObject[] bullet;  //ì´ì•Œ ì¶”í›„ 4ê°œ ë°°ì—´ë¡œ ë§Œë“¤ì˜ˆì •
     public Transform pos = null;
 
     public int power = 0;
     [SerializeField]
-    private GameObject powerup;  //private ÀÎ½ºÆåÅÍ¿¡¼­ »ç¿ëÇÏ´Â¹æ¹ı
+    private GameObject powerup;  //private ì¸ìŠ¤í™í„°ì—ì„œ ì‚¬ìš©í•˜ëŠ”ë°©ë²•
 
 
 
-    //·¹ÀÌÁ®
+    //ë ˆì´ì ¸
     public GameObject lazer;
     public float gValue = 0;
 
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        //¹æÇâÅ°¿¡µû¸¥ ¿òÁ÷ÀÓ
+        //ë°©í–¥í‚¤ì—ë”°ë¥¸ ì›€ì§ì„
         float moveX = moveSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
         float moveY = moveSpeed * Time.deltaTime * Input.GetAxis("Vertical");
 
@@ -60,10 +60,10 @@ public class Player : MonoBehaviour
             ani.SetBool("up", false);
         }
 
-        //½ºÆäÀÌ½º
+        //ìŠ¤í˜ì´ìŠ¤
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            //ÇÁ¸®ÆÕ À§Ä¡ ¹æÇâ ³Ö°í »ı¼º
+            //í”„ë¦¬íŒ¹ ìœ„ì¹˜ ë°©í–¥ ë„£ê³  ìƒì„±
             Instantiate(bullet[power], pos.position, Quaternion.identity);
         }
         else if(Input.GetKey(KeyCode.Space))
@@ -100,12 +100,12 @@ public class Player : MonoBehaviour
 
 
 
-        //Ä³¸¯ÅÍÀÇ ¿ùµå ÁÂÇ¥¸¦ ºäÆ÷Æ® ÁÂÇ¥°è·Î º¯È¯ÇØÁØ´Ù.
+        //ìºë¦­í„°ì˜ ì›”ë“œ ì¢Œí‘œë¥¼ ë·°í¬íŠ¸ ì¢Œí‘œê³„ë¡œ ë³€í™˜í•´ì¤€ë‹¤.
         Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);
-        viewPos.x = Mathf.Clamp01(viewPos.x); //x°ªÀ» 0ÀÌ»ó, 1ÀÌÇÏ·Î Á¦ÇÑÇÑ´Ù.
-        viewPos.y = Mathf.Clamp01(viewPos.y); //y°ªÀ» 0ÀÌ»ó, 1ÀÌÇÏ·Î Á¦ÇÑÇÑ´Ù.
-        Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewPos);//´Ù½Ã¿ùµåÁÂÇ¥·Î º¯È¯
-        transform.position = worldPos; //ÁÂÇ¥¸¦ Àû¿ëÇÑ´Ù.
+        viewPos.x = Mathf.Clamp01(viewPos.x); //xê°’ì„ 0ì´ìƒ, 1ì´í•˜ë¡œ ì œí•œí•œë‹¤.
+        viewPos.y = Mathf.Clamp01(viewPos.y); //yê°’ì„ 0ì´ìƒ, 1ì´í•˜ë¡œ ì œí•œí•œë‹¤.
+        Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewPos);//ë‹¤ì‹œì›”ë“œì¢Œí‘œë¡œ ë³€í™˜
+        transform.position = worldPos; //ì¢Œí‘œë¥¼ ì ìš©í•œë‹¤.
 
 
 
@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
                 power = 3;
 
 
-             //ÆÄ¿ö¾÷
+             //íŒŒì›Œì—…
              GameObject go = Instantiate(powerup, transform.position, Quaternion.identity);
             Destroy(go, 1);
 
@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
 
 
 
-            //¾ÆÀÌÅÛ ¸ÔÀº Ã³¸®
+            //ì•„ì´í…œ ë¨¹ì€ ì²˜ë¦¬
             Destroy(collision.gameObject);
         }
     }

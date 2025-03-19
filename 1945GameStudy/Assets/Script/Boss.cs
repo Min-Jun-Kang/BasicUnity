@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
@@ -15,10 +16,9 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
-        Invoke("Hide", 2); //1ÃÊµÚ¿¡ º¸½º¿ö´× ²¨Áà
+        Invoke("Hide", 2); //1ì´ˆë’¤ì— ë³´ìŠ¤ì›Œë‹ êº¼ì¤˜
         StartCoroutine(BossMissle());
         StartCoroutine(CircleFire());
-
     }
 
     void Hide()
@@ -27,14 +27,11 @@ public class Boss : MonoBehaviour
     }
 
 
-
-
-
     IEnumerator BossMissle()
     {
         while(true)
         {
-            //¹Ì»çÀÏ µÎ°³
+            //ë¯¸ì‚¬ì¼ ë‘ê°œ
             Instantiate(mb, pos1.position, Quaternion.identity);
             Instantiate(mb, pos2.position, Quaternion.identity);
 
@@ -46,47 +43,47 @@ public class Boss : MonoBehaviour
 
 
 //sin      0  -> 1
-//°¢µµ     0  ->90
+//ê°ë„     0  ->90
 //cos      1  -> 0
-//°¢µµ     0 -> 90
+//ê°ë„     0 -> 90
 
 
-      //¿ø¹æÇâÀ¸·Î ¹Ì»çÀÏ ¹ß»ç
+      //ì›ë°©í–¥ìœ¼ë¡œ ë¯¸ì‚¬ì¼ ë°œì‚¬
      IEnumerator CircleFire()
     {
-        //°ø°ÝÁÖ±â
+        //ê³µê²©ì£¼ê¸°
         float attackRate = 3;
-        //¹ß»çÃ¼ »ý¼º°¹¼ö
+        //ë°œì‚¬ì²´ ìƒì„±ê°¯ìˆ˜
         int count = 30;
-        //¹ß»çÃ¼ »çÀÌÀÇ °¢µµ
+        //ë°œì‚¬ì²´ ì‚¬ì´ì˜ ê°ë„
         float intervalAngle = 360 / count;
-        //°¡ÁßµÇ´Â °¢µµ(Ç×»ó °°Àº À§Ä¡·Î ¹ß»çÇÏÁö ¾Êµµ·Ï ¼³Á¤
+        //ê°€ì¤‘ë˜ëŠ” ê°ë„(í•­ìƒ ê°™ì€ ìœ„ì¹˜ë¡œ ë°œì‚¬í•˜ì§€ ì•Šë„ë¡ ì„¤ì •
         float weightAngle = 0f;
 
-        //¿ø ÇüÅÂ·Î ¹æ»çÇÏ´Â ¹ß»çÃ¼ »ý¼º(count °¹¼ö ¸¸Å­)
+        //ì› í˜•íƒœë¡œ ë°©ì‚¬í•˜ëŠ” ë°œì‚¬ì²´ ìƒì„±(count ê°¯ìˆ˜ ë§Œí¼)
         while(true)
         {
 
             for(int i =0; i<count; ++i )
             {
-                //¹ß»çÃ¼ »ý¼º
+                //ë°œì‚¬ì²´ ìƒì„±
                 GameObject clone = Instantiate(mb2, transform.position, Quaternion.identity);
 
-                //¹ß»çÃ¼ ÀÌµ¿ ¹æÇâ(°¢µµ)
+                //ë°œì‚¬ì²´ ì´ë™ ë°©í–¥(ê°ë„)
                 float angle = weightAngle + intervalAngle * i;
-                //¹ß»çÃ¼ ÀÌµ¿ ¹æÇâ(º¤ÅÍ)
-                //Cos(°¢µµ)¶óµð¾È ´ÜÀ§ÀÇ °¢µµ Ç¥ÇöÀ» À§ÇØ pi/180À» °öÇÔ
+                //ë°œì‚¬ì²´ ì´ë™ ë°©í–¥(ë²¡í„°)
+                //Cos(ê°ë„)ë¼ë””ì•ˆ ë‹¨ìœ„ì˜ ê°ë„ í‘œí˜„ì„ ìœ„í•´ pi/180ì„ ê³±í•¨
                 float x = Mathf.Cos(angle * Mathf.Deg2Rad);
-                //sin(°¢µµ)¶óµð¾È ´ÜÀ§ÀÇ °¢µµ Ç¥ÇöÀ» À§ÇØ pi/180À» °öÇÔ
+                //sin(ê°ë„)ë¼ë””ì•ˆ ë‹¨ìœ„ì˜ ê°ë„ í‘œí˜„ì„ ìœ„í•´ pi/180ì„ ê³±í•¨
                 float y = Mathf.Sin(angle * Mathf.Deg2Rad);
 
-                //¹ß»çÃ¼ ÀÌµ¿ ¹æÇâ ¼³Á¤
+                //ë°œì‚¬ì²´ ì´ë™ ë°©í–¥ ì„¤ì •
                 clone.GetComponent<BossBullet>().Move(new Vector2(x, y));
             }
-            //¹ß»çÃ¼°¡ »ý¼ºµÇ´Â ½ÃÀÛ °¢µµ ¼³Á¤À» À§ÇÑº¯¼ö
+            //ë°œì‚¬ì²´ê°€ ìƒì„±ë˜ëŠ” ì‹œìž‘ ê°ë„ ì„¤ì •ì„ ìœ„í•œë³€ìˆ˜
             weightAngle += 1;
 
-            //3ÃÊ¸¶´Ù ¹Ì»çÀÏ ¹ß»ç
+            //3ì´ˆë§ˆë‹¤ ë¯¸ì‚¬ì¼ ë°œì‚¬
             yield return new WaitForSeconds(attackRate);
 
         }

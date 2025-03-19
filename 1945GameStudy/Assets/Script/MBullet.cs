@@ -25,10 +25,10 @@ public class MBullet : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            //ÇÃ·¹ÀÌ¾î Áö¿ì±â
+            //í”Œë ˆì´ì–´ ì§€ìš°ê¸°
 
 
-            //¹Ì»çÀÏÁö¿ì±â
+            //ë¯¸ì‚¬ì¼ì§€ìš°ê¸°
             Destroy(gameObject);
         }
     }

@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class BossHead : MonoBehaviour
 {
-    [SerializeField] //Á÷·ÄÈ­
-    GameObject bossbullet; //º¸½º¹Ì»çÀÏ
+    [SerializeField] //ì§ë ¬í™”
+    GameObject bossbullet; //ë³´ìŠ¤ë¯¸ì‚¬ì¼
 
-    //¾Ö´Ï¸ŞÀÌ¼Ç¿¡¼­ ÇÔ¼ö»ç¿ëÇÏ±â
+    //ì• ë‹ˆë©”ì´ì…˜ì—ì„œ í•¨ìˆ˜ì‚¬ìš©í•˜ê¸°
     public void RightDownLaunch()
     {
         GameObject go = Instantiate(bossbullet, transform.position, Quaternion.identity);
