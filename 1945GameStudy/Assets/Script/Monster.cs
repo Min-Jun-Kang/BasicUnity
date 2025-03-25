@@ -60,8 +60,6 @@ public class Monster : MonoBehaviour
              Destroy(gameObject);
             //PoolManager.Instance.Return(gameObject);
         }
-
-      
     }
 
 

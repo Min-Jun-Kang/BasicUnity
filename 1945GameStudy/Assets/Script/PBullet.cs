@@ -4,7 +4,7 @@ public class PBullet : MonoBehaviour
 {
     public float Speed = 4.0f;
     //공격력
-    public int Attack = 10;
+    public int Attack = 0;
     //이펙트
     public GameObject effect;
         
