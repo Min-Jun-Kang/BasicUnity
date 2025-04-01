@@ -10,7 +10,7 @@ public class Monster : MonoBehaviour
     public Transform ms2;
     public GameObject bullet;
     //아이템 가져오기
-    public GameObject Item = null;
+    public GameObject Item;
 
     
     void Start()

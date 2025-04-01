@@ -3,11 +3,6 @@ using UnityEngine;
 public class MBullet : MonoBehaviour
 {
     public float Speed = 3f;
-    void Start()
-    {
-        
-    }
-
     
     void Update()
     {
